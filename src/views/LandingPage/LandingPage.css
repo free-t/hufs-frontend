@@ -1,0 +1,15 @@
+a {
+    text-decoration: none;
+}
+.logo {
+    height: 300px;
+    text-align: center;
+}
+img {
+    margin-top: 100px
+}
+
+div{
+    border: 1px solid rgb(34, 62, 99);
+}
+
