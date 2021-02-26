@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./LandingPage.css";
-
+import './LandingPage.css'
+import PostList from '../../components/Post/PostList'
 function LandingPage(props) {
   return (
     <div>
@@ -21,10 +21,15 @@ function LandingPage(props) {
         <div>
           <input className="searchBox"></input>
         </div>
-        <div>메뉴 박스</div>
+        <div style={{display:"flex", justifyContent:"space-around"}}>
+          <span>커뮤니티</span>
+          <span>학사 관련</span>
+          <span>졸업생</span>
+          <span>생활</span>
+          <span>진로/취업</span>
+          <span>정보</span>
+        </div>
       </div>
-
-      {/* <Link to="/list">List</Link> */}
     </div>
   );
 }

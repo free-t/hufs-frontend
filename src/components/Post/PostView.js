@@ -1,19 +1,27 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { matchPath } from "react-router-dom";
-import { getList } from "./list_action";
+import { useDispatch } from "react-redux";
+import { postRemove } from "../../_actions/post_action";
 
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
   const [lists, setlists] = useState();
+  const dispatch = useDispatch();
 
   useEffect(async () => {
-    const view = await getList().then((posts) => {
-      return posts.find((post) => post.id === +match.params.id);
-    });
-    setlists(view);
+    const view = await axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => res.data);
+    const post = view.find((posts) => posts.id === +match.params.id);
+    setlists(post);
   }, []);
 
+  const onDelete = () => {
+    console.log(lists.id)
+    dispatch(postRemove(lists.id))
+  }
+  
   return (
     <div>
       {lists ? (
@@ -21,6 +29,7 @@ function PostView({ match, history }) {
           <p>{lists.id}</p>
           <h2>{lists.title}</h2>
           <p>{lists.body}</p>
+          <button onClick={onDelete}> 삭제하기</button>
         </div>
       ) : (
         "isLoading"

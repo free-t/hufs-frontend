@@ -1,7 +1,8 @@
 // reducer 합칠 곳 
 import { combineReducers } from 'redux';
-
+import post from './post_reducer'
 const rootReducer = combineReducers({
+    post  //user, post, etc..
 })
 
 export default rootReducer;
