@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { postRemove, postSave, postList } from "../../_actions/post_action";
 import ReactPaginate from "react-paginate";
 import './PostList.css'
-import LandingPage from "../../views/LandingPage/LandingPage";
 function PostList({ match }) {
   const [currentList, setCurrentList] = useState();
   const [listPerPage, setListPerPage] = useState(10);
@@ -39,7 +38,6 @@ function PostList({ match }) {
           match={match}
         />
       </table>
-      <div className="">
         <ReactPaginate
           pageCount={Math.ceil(posts.length/ 10)}
           pageRangeDisplayed={5}
@@ -53,7 +51,6 @@ function PostList({ match }) {
           previousClassName={"pageLabel-btn"}
           nextClassName={"pageLabel-btn"}
         />
-        </div>
     </div>
   );
 }

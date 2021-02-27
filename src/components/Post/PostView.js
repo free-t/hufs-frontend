@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postRemove } from "../../_actions/post_action";
-
+import CommentEdit from "../comment/CommentEdit";
+import CommentList from "../comment/CommentList";
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
@@ -18,10 +19,10 @@ function PostView({ match, history }) {
   }, []);
 
   const onDelete = () => {
-    console.log(lists.id)
-    dispatch(postRemove(lists.id))
-  }
-  
+    console.log(lists.id);
+    dispatch(postRemove(lists.id));
+  };
+
   return (
     <div>
       {lists ? (
@@ -34,6 +35,8 @@ function PostView({ match, history }) {
       ) : (
         "isLoading"
       )}
+      <CommentList match={match} />
+      <CommentEdit match={match} />
     </div>
   );
 }
