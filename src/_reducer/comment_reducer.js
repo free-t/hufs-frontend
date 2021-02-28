@@ -15,15 +15,14 @@ export default function comment(state = initialState, action) {
     case COMMENT_REMOVE:
       return {};
     case COMMENT_LIKE:
-      //action.payload : commentId입니다.  map사용해서 해볼까?
-    //   let y = comments.map((comment) => {
-    //   if (comment.commentId === action.payload) {
-    //     comment.commentId + 1;
-    //   } 
-    // });
-      
       return {
-        ...state,        
+        comments: comments.map(comment => {
+          if (comment.commentId == action.payload){
+            return {...comment, like: comment.like + 1}
+          } else {
+            return comment
+          }
+        })        
       };
     default:
       return state;
@@ -38,7 +37,7 @@ const initialState = {
       userId: "1",
       content: "1",
       date: "1",
-      like: "1",
+      like: 1,
     },
     {
       postId: "1",
@@ -46,7 +45,7 @@ const initialState = {
       userId: "2",
       content: "2",
       date: "3",
-      like: "3",
+      like: 2,
     },
     {
       postId: "1",
@@ -54,7 +53,7 @@ const initialState = {
       userId: "2",
       content: "2",
       date: "3",
-      like: "3",
+      like: 3,
     },
     {
       postId: "1",
@@ -62,7 +61,7 @@ const initialState = {
       userId: "2",
       content: "2",
       date: "3",
-      like: "3",
+      like: 4,
     },
   ],
 };
