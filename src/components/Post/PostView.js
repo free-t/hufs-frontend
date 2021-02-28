@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { postRemove } from "../../_actions/post_action";
 import CommentEdit from "../comment/CommentEdit";
 import CommentList from "../comment/CommentList";
@@ -9,18 +10,18 @@ import CommentList from "../comment/CommentList";
 function PostView({ match, history }) {
   const [lists, setlists] = useState();
   const dispatch = useDispatch();
+  const {posts} = useSelector(state => state.post)
 
-  useEffect(async () => {
-    const view = await axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.data);
-    const post = view.find((posts) => posts.id === +match.params.id);
+  useEffect(() => {
+    const post = posts.find((posts) => posts.id === +match.params.id);
     setlists(post);
   }, []);
 
   const onDelete = () => {
     console.log(lists.id);
     dispatch(postRemove(lists.id));
+
+    history.push('/list');
   };
 
   return (
@@ -41,4 +42,4 @@ function PostView({ match, history }) {
   );
 }
 
-export default PostView;
+export default withRouter(PostView);

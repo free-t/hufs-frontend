@@ -1,17 +1,17 @@
 import axios from "axios";
 import { POST_LIST, POST_REMOVE, POST_SAVE } from "./types";
 
-
-export const postSave = (dataToSubmit) => {
+// redux-promise returns promise and can use async/await here
+// reudx-chunk returns function
+export const postSave = async (dataToSubmit) => {
   // const request = axios.post("url", dataToSubmit).then((res) => res.data);
   // dataToSubmit = {id:, title:, content:,}
+  const request = await axios.post("https://reqres.in/api/users").then(res => res.data)
   return {
     type: POST_SAVE,
-    payload: {
-      id: dataToSubmit.id,
-      title: dataToSubmit.title,
-      content: dataToSubmit.content
-    }
+    payload: dataToSubmit,
+    // saveSuccess: true,
+    req: request,
   };
 };
 export const postRemove =  (postId) => {

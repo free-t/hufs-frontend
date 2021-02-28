@@ -2,7 +2,6 @@ import React from "react";
 import { Route } from "react-router-dom";
 import PostList from "../../components/post/PostList";
 import PostView from "../../components/post/PostView";
-import Test from '../../components/post/Test'
 function Post({ match }) {
   return (
     <div> 

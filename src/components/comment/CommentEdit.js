@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { commentSave } from "../../_actions/comment_action";
-function CommentEdit({ match }) {
+function CommentEdit(props) {
   const dispatch = useDispatch();
   const [content, setContent] = useState("");
   const changeHandler = (e) => setContent(e.target.value);
@@ -10,13 +10,14 @@ function CommentEdit({ match }) {
     console.log("submitted");
 
     let body = {
-      postId: match.params.id,
-      userId: "userId",
-      content: content,
-      commentId: new Date(), // to be changed
+      postId: props.match.params.id, // posturl
+      userId: "userId", // to be changed
+      content: content, 
+      like: 0, 
+      commentId: "300" // to be changed
     };
     // dispatch(commentSave(content, userId, postId))
-    dispatch(commentSave(body));
+    dispatch(commentSave(body))
 
     setContent("");
   };
