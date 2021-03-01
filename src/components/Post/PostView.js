@@ -26,9 +26,6 @@ function PostView({ match, history }) {
     console.log(lists.id);
     dispatch(postLike(lists.id));
   };
-  const onUpdate = () => {
-    dispatch(postUpdate());
-  };
 
   return (
     <div>
