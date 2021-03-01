@@ -1,25 +1,25 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { postRemove, postSave, postList } from "../../_actions/post_action";
-import ReactPaginate from "react-paginate";
-import "./PostList.css";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { postRemove, postSave, postList } from '../../_actions/post_action';
+import ReactPaginate from 'react-paginate';
+import './PostList.css';
 function PostList({ match }) {
   const [currentList, setCurrentList] = useState([]);
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
- // postlist는 바로 db에서 가져오기?
+  // postlist는 바로 db에서 가져오기?
   // useEffect(async () => {
   //   const initialList = await axios
   //     .get("https://jsonplaceholder.typicode.com/posts")
   //     .then((res) => res.data); // api로 데이터 가져오기
   //   dispatch(postList(initialList));
-    // dispatch(postList(testPost))
+  // dispatch(postList(testPost))
   // }, []);
   const { posts } = useSelector((state) => state.post); //  백엔드랑 연동해서 사용해보고 에러있으면
-                                                        //  axios로 그냥 바로 db에서 가져와야 할 듯 -> 속도 개선은 흠..
+  //  axios로 그냥 바로 db에서 가져와야 할 듯 -> 속도 개선은 흠..
 
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
@@ -44,23 +44,25 @@ function PostList({ match }) {
         pageCount={Math.ceil(posts.length / 10)}
         pageRangeDisplayed={5}
         marginPagesDisplayed={0}
-        breakLabel={""}
-        previousLabel={"이전"}
-        nextLabel={"다음"}
+        breakLabel={''}
+        previousLabel={'이전'}
+        nextLabel={'다음'}
         onPageChange={(e) => setCurrentPage(e.selected + 1)}
-        containerClassName={"pagination-ul"}
-        activeClassName={"currentPage"}
-        previousClassName={"pageLabel-btn"}
-        nextClassName={"pageLabel-btn"}
+        containerClassName={'pagination-ul'}
+        activeClassName={'currentPage'}
+        previousClassName={'pageLabel-btn'}
+        nextClassName={'pageLabel-btn'}
       />
-      <span><Link to="/edit"><button>글 작성</button></Link></span>
+      <span>
+        <Link to="/edit">
+          <button>글 작성</button>
+        </Link>
+      </span>
     </div>
   );
 }
 
 export default PostList;
-
-
 
 // component로 분리해야 dir
 
@@ -88,7 +90,6 @@ function TableBody({ currentList, match }) {
               <td>{list.title.slice(0, 4)}</td>
               <td>
                 <Link to={`${match.path}/${list.id}`}>{list.userId}</Link>
-                {/* <a href={`${match.path}/${list.id}`}>aa</a>  */}
               </td>
               <td>조회수</td>
             </tr>

@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { commentSave } from "../../_actions/comment_action";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { commentSave } from '../../_actions/comment_action';
 function CommentEdit(props) {
   const dispatch = useDispatch();
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const changeHandler = (e) => setContent(e.target.value);
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    console.log('submitted');
 
     let body = {
       postId: props.match.params.id, // posturl
-      userId: "userId", // to be changed
-      content: content, 
-      like: 0, 
-      commentId: "300" // to be changed
+      userId: 'userId', // to be changed
+      content: content,
+      like: 0,
+      commentId: '300', // to be changed
     };
     // dispatch(commentSave(content, userId, postId))
-    dispatch(commentSave(body))
+    dispatch(commentSave(body));
 
-    setContent("");
+    setContent('');
   };
   return (
     <div>

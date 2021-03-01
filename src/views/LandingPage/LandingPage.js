@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import './LandingPage.css'
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './LandingPage.css';
 function LandingPage(props) {
   return (
     <div>
-      <div style={{ width: "800px", margin: "0 auto" }}>
-        <div style={{ textAlign: "right" }}>
+      <div style={{ width: '800px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'right' }}>
           <span>
             <a href="#">회원가입 </a>
             <a href="#">로그인 </a>
@@ -20,7 +20,7 @@ function LandingPage(props) {
         <div>
           <input className="searchBox"></input>
         </div>
-        <div style={{display:"flex", justifyContent:"space-around"}}>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           <span>커뮤니티</span>
           <span>학사 관련</span>
           <span>졸업생</span>
