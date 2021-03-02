@@ -10,11 +10,10 @@ function CommentEdit(props) {
     console.log('submitted');
 
     let body = {
-      postId: props.match.params.id, // posturl
+      postId: +props.match.params.id, // posturl
       userId: 'userId', // to be changed
       content: content,
       like: 0,
-      commentId: '300', // to be changed
     };
     // dispatch(commentSave(content, userId, postId))
     dispatch(commentSave(body));

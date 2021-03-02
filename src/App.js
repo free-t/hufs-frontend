@@ -7,14 +7,14 @@ import Test from './Test';
 function App() {
   return (
     <Router>
-      <header> 항상 보여요 header</header>
+      {/* <header> 항상 보여요 header</header> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route path="/list" component={Post} />
         <Route path="/test" component={Test} />
         <Route path="/edit" component={PostEdit} />
       </Switch>
-      <footer>항상 보여요 footer</footer>
+      {/* <footer>항상 보여요 footer</footer> */}
     </Router>
   );
 }

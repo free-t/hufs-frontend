@@ -29,7 +29,7 @@ export const postUpdate = async (dataToSubmit) => {
   };
 };
 export const postRemove = (dataToSubmit) => {
-  // const request = axios.delete("url", boardId).then((res) => res.data);
+  // const request = axios.delete("url", dataToSubmit) {boardId, postId, (auth?)}
   return {
     type: POST_REMOVE,
     id: dataToSubmit,
