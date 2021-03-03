@@ -1,8 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postRemove, postSave, postList } from '../../_actions/post_action';
 import ReactPaginate from 'react-paginate';
 import './PostList.css';
 function PostList({ match }) {
@@ -31,8 +29,6 @@ function PostList({ match }) {
 
   return (
     <div>
-      {console.log(posts.length)}
-      {/* header, menubox component */}
       <table>
         <TableHeader />
         <TableBody
@@ -63,8 +59,6 @@ function PostList({ match }) {
 }
 
 export default PostList;
-
-// component로 분리해야 dir
 
 function TableHeader() {
   return (

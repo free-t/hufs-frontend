@@ -8,30 +8,27 @@ import {
 
 export const commentSave = (dataToSubmit) => {
   //const req = axios.post("api", dataToSubmit).then(res => res.data)
-  // dataToSubmit = {postId:'', userId:'', content:'', like:'',}
+  // dataToSubmit = {postId:'', userId:'', content:''}
   return {
     type: COMMENT_SAVE,
-    payload: dataToSubmit,
+    payload: dataToSubmit, // req로 바꾸기
   };
 };
 
-export const commentLike = (commentId) => {
-  // 보내야 하는 것: postId, commentId, userId
-  //const req = axios.post("api", commentId).then(res => res.data)
-  // 받는 req?  전체 comment state - > reducer에서 return ...state하면됨
-  //            해당 commentId와 변한 LIKE? -> find해서 like만 수정?
+export const commentLike = (dataToSubmit) => {
+  //const req = axios.post("api", dataToSubmit).then(res => res.data)
+  // dataToSubmit = commentId
   return {
     type: COMMENT_LIKE,
-    payload: commentId,
+    payload: dataToSubmit,
   };
   // 이미 like한 유저인지를 받아와서 -> if로 type:COMMENT_UNABLE 을 return하면 reducer에서 return {...comments, likesuccess:false하면될듯}
 };
 // remove에 필요한 것. commentId, 유저의 권한 여부(작성자인가?),
-export const commentRemove = (data) => {
-  //number
-  console.log(typeof data.commentId);
+export const commentRemove = (dataToSubmit) => {
+  // dataToSubmit = commentId
   return {
     type: COMMENT_REMOVE,
-    payoad: data.commentId,
+    payoad: dataToSubmit.commentId,
   };
 };
