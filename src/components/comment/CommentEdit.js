@@ -7,8 +7,11 @@ function CommentEdit(props) {
   const changeHandler = (e) => setContent(e.target.value);
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log('submitted');
+
     let body = {
       postId: +props.match.params.id, // posturl
+      userId: 'userId', // to be changed
       content: content,
       like: 0,
     };

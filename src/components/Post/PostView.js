@@ -8,33 +8,36 @@ import CommentList from '../comment/CommentList';
 // 상세 게시글 보기
 // 게시글 내용 불러오기 ->
 function PostView({ match, history }) {
-  const [view, setView] = useState();
+  const [lists, setlists] = useState();
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.post);
 
   useEffect(() => {
     const post = posts.find((posts) => posts.id === +match.params.id);
-    setview(post);
+    setlists(post);
   }, [posts]);
 
   const onDelete = () => {
-    dispatch(postRemove(view.id)).then(history.push('/list'));
+    console.log(lists.id);
+    dispatch(postRemove(lists.id));
+    history.push('/list');
   };
   const onLike = () => {
-    dispatch(postLike(view.id));
+    console.log(lists.id);
+    dispatch(postLike(lists.id));
   };
 
   return (
     <div>
-      {view ? (
+      {lists ? (
         <div>
-          <p>{view.id}</p>
-          <h2>{view.title}</h2>
-          <p>{view.content}</p>
-          <p>추천수: {view.like}</p>
+          <p>{lists.id}</p>
+          <h2>{lists.title}</h2>
+          <p>{lists.content}</p>
+          <p>추천수: {lists.like}</p>
           <button onClick={onDelete}> 삭제하기</button>
           <button onClick={onLike}> 추천하기</button>
-          <Link to={`${view.id}/update`}>
+          <Link to={`${lists.id}/update`}>
             <button>수정하기</button>
           </Link>
         </div>

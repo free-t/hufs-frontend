@@ -7,23 +7,19 @@ import { postUpdate } from '../../_actions/post_action';
 function PostUpdate({ match, history }) {
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.post);
-  const [updated, setUpdated] = useState({
+  const [updated, setupdated] = useState({
     title: '',
     content: '',
   });
   const post = posts.find((posts) => posts.id === +match.params.id);
-
   useEffect(() => {
-    setUpdated({ ...post });
+    setupdated({ ...post });
   }, []);
-  const titleHandler = (event) => {
-    setUpdated({ ...updated, title: event.target.value });
-  };
-  const contentHandler = (event) => {
-    setUpdated({ ...updated, content: event.target.value });
-  };
   const onUpdate = () => {
-    dispatch(postUpdate(updated)).then(history.goBack());
+    dispatch(postUpdate(updated))
+      .then((res) => console.log(res))
+      .then(history.goBack());
+    //   .then(console.log(history.goback));
   };
 
   return (
@@ -32,11 +28,20 @@ function PostUpdate({ match, history }) {
         <div>
           <p>글 번호: {post.id}</p>
           <h2>제목 :</h2>{' '}
-          <input onChange={titleHandler} value={updated.title}></input>
+          <input
+            onChange={(e) => setupdated({ ...updated, title: e.target.value })}
+            value={updated.title}
+          ></input>
           <p>
             내용{' '}
-            <input onChange={contentHandler} value={updated.content}></input>
+            <input
+              onChange={(e) =>
+                setupdated({ ...updated, content: e.target.value })
+              }
+              value={updated.content}
+            ></input>
           </p>
+          <p>추천수: {post.like}</p>
           <button onClick={onUpdate}>수정하기</button>
         </div>
       ) : (
