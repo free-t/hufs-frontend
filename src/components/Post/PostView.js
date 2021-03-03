@@ -14,7 +14,7 @@ function PostView({ match, history }) {
 
   useEffect(() => {
     const post = posts.find((posts) => posts.id === +match.params.id);
-    setview(post);
+    setView(post);
   }, [posts]);
 
   const onDelete = () => {

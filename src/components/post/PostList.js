@@ -8,17 +8,8 @@ function PostList({ match }) {
   const [listPerPage, setListPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
-  // postlist는 바로 db에서 가져오기?
-  // useEffect(async () => {
-  //   const initialList = await axios
-  //     .get("https://jsonplaceholder.typicode.com/posts")
-  //     .then((res) => res.data); // api로 데이터 가져오기
-  //   dispatch(postList(initialList));
-  // dispatch(postList(testPost))
-  // }, []);
-  const { posts } = useSelector((state) => state.post); //  백엔드랑 연동해서 사용해보고 에러있으면
-  //  axios로 그냥 바로 db에서 가져와야 할 듯 -> 속도 개선은 흠..
 
+  const { posts } = useSelector((state) => state.post);
   useEffect(() => {
     const sliced = posts.slice(firstIndex, lastIndex);
     setCurrentList(sliced);

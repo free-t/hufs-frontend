@@ -9,6 +9,7 @@ export default function comment(state = initialState, action) {
   const comments = state.comments;
   switch (action.type) {
     case COMMENT_SAVE:
+      action.payload.like = 0;
       action.payload.commentId = state.maxNo + 1;
       return {
         maxNo: state.maxNo + 1,

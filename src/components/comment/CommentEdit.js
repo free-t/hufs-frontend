@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { commentSave } from '../../_actions/comment_action';
+import useInput from '../../hooks/useInput';
 function CommentEdit(props) {
   const dispatch = useDispatch();
-  const [content, setContent] = useState('');
-  const changeHandler = (e) => setContent(e.target.value);
+  // const [content, setContent] = useState('');
+  // const changeHandler = (e) => setContent(e.target.value);
+  const [content, onChange, setContent] = useInput('');
   const submitHandler = (e) => {
     e.preventDefault();
     let body = {
-      postId: +props.match.params.id, // posturl
+      postId: +props.match.params.id,
       content: content,
-      like: 0,
     };
-    // dispatch(commentSave(content, userId, postId))
     dispatch(commentSave(body));
 
     setContent('');
@@ -24,7 +24,7 @@ function CommentEdit(props) {
           type="text"
           placeholder="댓글을 입력하세요"
           value={content}
-          onChange={changeHandler}
+          onChange={onChange}
         />
         <button> 입력 </button>
       </form>
