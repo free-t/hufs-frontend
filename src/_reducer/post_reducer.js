@@ -4,6 +4,7 @@ import {
   POST_SAVE,
   POST_LIKE,
   POST_UPDATE,
+  POST_REPORT,
 } from '../_actions/types';
 
 export default function post(state = initialState, action) {
@@ -48,6 +49,8 @@ export default function post(state = initialState, action) {
           }
         }),
       };
+    case POST_REPORT:
+      return { ...state };
     case POST_LIST:
       return {
         ...state,
