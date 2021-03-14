@@ -22,13 +22,13 @@ export const postSave = async (dataToSubmit) => {
   // const request = await axios.post("api", dataToSubmit).then(res => res.data)
   return {
     type: POST_SAVE,
-    payload: dataToSubmit,
+    payload: dataToSubmit, // 지금은 title , content
   };
 };
 export const postUpdate = async (dataToSubmit) => {
   return {
     type: POST_UPDATE,
-    payload: dataToSubmit,
+    payload: dataToSubmit, // title, content
   };
 };
 export const postRemove = async (dataToSubmit) => {
