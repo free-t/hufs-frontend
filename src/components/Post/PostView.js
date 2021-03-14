@@ -42,7 +42,7 @@ function PostView({ match, history }) {
         <div>
           <p>{view.id}</p>
           <h2>{view.title}</h2>
-          <p>{view.content}</p>
+          <div dangerouslySetInnerHTML={{ __html: view.content }} />
           <p>추천수: {view.like}</p>
           <button onClick={onDelete}> 삭제하기</button>
           <button onClick={onLike}> 추천하기</button>
