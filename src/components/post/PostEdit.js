@@ -26,6 +26,7 @@ function PostEdit(props) {
     console.log(uploadedImg);
     // 두 배열 비교해서 백엔드로 보내야 함 +  전체 내용까지
     getUnused(uploadedImg, submittedImg);
+
   };
   // useInput 커스텀 훅으로 줄이기
   const submitHandler = (e) => {
@@ -44,6 +45,7 @@ function PostEdit(props) {
 
     dispatch(postSave(body)).then((res) => {
       if (res) {
+
         props.history.push('/list');
       } else {
         alert('error');
@@ -71,6 +73,7 @@ function PostEdit(props) {
         modules={modules}
         formats={formats}
       ></ReactQuill>
+
       <button onClick={submitHandler}>제출</button>
     </div>
   );
@@ -172,3 +175,4 @@ function getUnused(uploadedImg, submittedImg) {
   }
   console.log(unused);
 }
+

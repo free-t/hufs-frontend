@@ -22,6 +22,7 @@ function PostView({ match, history }) {
     setView(post);
   }, [posts]);
 
+
   const onDelete = () => {
     dispatch(postRemove(view.id)).then(history.push('/list'));
   };
@@ -47,6 +48,7 @@ function PostView({ match, history }) {
           <button onClick={onDelete}> 삭제하기</button>
           <button onClick={onLike}> 추천하기</button>
           <button onClick={onReport}>신고하기</button>
+
 
           <Link to={`${view.id}/update`}>
             <button>수정하기</button>

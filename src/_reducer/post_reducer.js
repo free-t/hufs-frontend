@@ -51,6 +51,7 @@ export default function post(state = initialState, action) {
       };
     case POST_REPORT:
       return { ...state };
+
     case POST_LIST:
       return {
         ...state,
