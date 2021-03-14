@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactQuill, { Quill } from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useBeforeunload } from 'react-beforeunload';
+
 import { withRouter } from 'react-router-dom';
 import { postUpdate } from '../../_actions/post_action';
 // 상세 게시글 보기
@@ -24,6 +25,7 @@ function PostUpdate({ match, history }) {
     // 여기서 처음 이미지 url 다 받아둬야 할 듯.
     console.log(post);
   }, []);
+
 
   const onUpdate = () => {
     dispatch(postUpdate(updated)).then(history.goBack());
@@ -53,6 +55,7 @@ function PostUpdate({ match, history }) {
             modules={modules}
             formats={formats}
           ></ReactQuill>
+
           <button onClick={onUpdate}>수정하기</button>
         </div>
       ) : (
@@ -158,3 +161,4 @@ function getUnused(uploadedImg, submittedImg) {
   }
   console.log(unused);
 }
+
